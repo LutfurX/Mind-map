@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Map Tree View</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .tree {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 100%;
+      padding: 10px;
+    }
+
+    .branch {
+      margin-left: 20px;
+      border-left: 2px solid #ccc;
+      padding-left: 15px;
+    }
+
+    .node {
+      margin: 8px 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .node::before {
+      content: '';
+      position: absolute;
+      left: -17px;
+      top: 10px;
+      width: 12px;
+      height: 0;
+      border-top: 2px solid #ccc;
+    }
+
+    .node-label {
+      font-weight: bold;
+      color: #222;
+    }
+
+    .node a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 500;
+    }
+
+    .node a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .branch {
+        margin-left: 10px;
+        padding-left: 10px;
+      }
+
+      .node::before {
+        left: -12px;
+        width: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧠 Mind Map Tree View</h2>
+
+  <div class="tree">
+    <div class="node node-label">📂 Profile</div>
+
+    <div class="node node-label" onclick="toggle('project')">📂 Project</div>
+    <div class="branch hidden" id="project">
+
+      <div class="node"><a href="demo/secret-project.html" target="_blank">🔐 Secret Project</a></div>
+      <div class="node"><a href="demo/islamic-project.html" target="_blank">☪️ Islamic Project</a></div>
+      <div class="node"><a href="demo/personal-opinions.html" target="_blank">💭 My Personal Opinions</a></div>
+
+      <div class="node" onclick="toggle('internet')">🌐 Know About Internet</div>
+      <div class="branch hidden" id="internet">
+        <div class="node"><a href="demo/tips-tricks.html" target="_blank">🛠️ Tips & Tricks</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.toggle("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
